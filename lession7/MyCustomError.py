@@ -11,6 +11,6 @@ def check_number(x):
         print("Число в диапазоне")
 
 try:
-    check_number(55)
+    check_number(101)
 except MyCustomError as e:
     print(e)
