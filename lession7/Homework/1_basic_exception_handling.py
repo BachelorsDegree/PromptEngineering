@@ -1,6 +1,5 @@
-import re
-
-
+# Функция для безопасного деления
+ 
 def safe_divide(a, b):
     try:
         result = a / b
