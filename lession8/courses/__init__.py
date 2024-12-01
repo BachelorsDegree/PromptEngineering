@@ -1,5 +1,4 @@
-import PromptEngineering.lession8.courses.python
-import PromptEngineering.lession8.courses.test
-import PromptEngineering.lession8.courses.test1
+import courses.python
+import courses.test
 
-test = "test"
+#test = "test"
