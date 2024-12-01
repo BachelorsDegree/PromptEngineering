@@ -1,4 +1,4 @@
 import courses.python
-import courses.test
+import courses.test  # noqa: F401
 
 #test = "test"
