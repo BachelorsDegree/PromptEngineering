@@ -1,4 +1,5 @@
-from matem import summa as s, mull as m
+from matem import mull as m
+from matem import summa as s
 
 #from matem import * - импортируем все функции
 #import matem as m - импортируем все функции и далее пишем m, вместо matem
