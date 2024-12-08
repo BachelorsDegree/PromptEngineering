@@ -16,25 +16,24 @@ file_path = 'new_text_file.txt'  # Replace with your file path
 encoding = detect_file_encoding(file_path)
 print(f"The encoding of the file is: {encoding}") # Вывод кодировки
 
-
 # Функция для вывода текста с указанной кодировкой
 def print_with_encoding(text, encoding='utf-8'):
-    #"""
-    #Print text to standard output with the specified encoding.
+    # Сохраняем оригинальный sys.stdout
+    original_stdout = sys.stdout
 
-    #Parameters:
-    #- text (str): The text to print.
-    #- encoding (str): The encoding to use for the output (default is 'utf-8').
-    #"""
-    # Create a TextIOWrapper for standard output with the desired encoding
-    with io.TextIOWrapper(sys.stdout.buffer, encoding=encoding) as f:
-        f.write(text + '\n')  # Write the text with a newline
+    # Перенаправляем sys.stdout на TextIOWrapper с нужной кодировкой
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=encoding)
+    
+    try:
+        # Выводим текст
+        sys.stdout.write(text + '\n')
+    finally:
+        # Возвращаем оригинальный sys.stdout
+        sys.stdout = original_stdout
 
-# Example usage
-# if __name__ == "__main__":
-#    print_with_encoding("Hello, world! Привет, мир!", encoding='utf-8')
-#    print_with_encoding("Hello, world! Привет, мир!", encoding='iso-8859-1')  # This may raise an error if characters are not supported
-
+# Пример использования
+# print_with_encoding("Hello, world! Привет, мир!", encoding='utf-8')
+# print_with_encoding("Hello, world! Привет, мир!", encoding='iso-8859-1')
 
 file = open("new_text_file.txt") # Открываем файл
 text = file.read( ) # Считываем содержимое файла
