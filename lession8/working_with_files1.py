@@ -35,18 +35,18 @@ def print_with_encoding(text, encoding='utf-8'):
 file = open("new_text_file.txt", encoding=encoding) # Открываем файл с определенной кодировкой
 text = file.read() # Считываем содержимое файла
 print(text) # Выводим содержимое на экран
-
+print("\n")
 # Рассмотрим ряд функций для взаимодействия с файлом:
 file.seek(0) # Перемещаемся в начало файла
 text = file.read(34) # Считываем определенное количество символов
-print_with_encoding(text, encoding='utf-8')
-
+print_with_encoding(text)
+print("\n")
 file.seek(0)
 text = file.readline() # Считываем одну строку
-print_with_encoding(text, encoding='utf-8')
-
+print_with_encoding(text)
+print("\n")
 file.seek(0)
 text = file.readlines() # Считываем все строки
-print_with_encoding(''.join(text), encoding='utf-8')
-
+print_with_encoding(''.join(text))
+print("\n")
 file.close() # Закрываем файл
