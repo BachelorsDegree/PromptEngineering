@@ -15,14 +15,14 @@ print_system_encoding()
 
 def print_console_encoding():
     # Получаем кодировку стандартного вывода
-    encoding = sys.stdout.encoding
-    print(f"Кодировка консоли: {encoding}")
+    setcurrentencoding = sys.stdout.encoding
+    print(f"Кодировка консоли: {setcurrentencoding}")
 
 print_console_encoding()
 
 # Функция для определения кодировки
-def detect_file_encoding(file_path):
-    with open(file_path, 'rb') as f:
+def detect_file_encoding(func_file_path):
+    with open(func_file_path, 'rb') as f:
         raw_data = f.read()
         result = chardet.detect(raw_data)
         return result['encoding']
@@ -32,13 +32,13 @@ encoding = detect_file_encoding(file_path)
 print(f"Кодировка файла: {encoding}") # Вывод кодировки
 
 # Функция для вывода текста с указанной кодировкой
-def print_with_encoding(text, encoding='utf-8'):
+def print_with_encoding(func_text, func_encoding='utf-8'):
     # Перенаправляем sys.stdout на TextIOWrapper с нужной кодировкой
-    wrapped_stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=encoding)
+    wrapped_stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=func_encoding)
     
     try:
         # Выводим текст
-        wrapped_stdout.write(text + '\n')
+        wrapped_stdout.write(func_text + '\n')
     finally:
         # Закрываем wrapped_stdout, но не sys.stdout
         wrapped_stdout.detach()
@@ -60,14 +60,14 @@ print("\n")
 print("Используем функцию для вывода текста из файла с кодировкой utf-8 в текст в кодировке cp1251:")
 file.seek(0) # Перемещаемся в начало файла
 text = file.read(34) # Считываем определенное количество символов
-print_with_encoding(text, encoding='cp1251')
+print_with_encoding(text, func_encoding='cp1251')
 print("\n")
 file.seek(0)
 text = file.readline() # Считываем одну строку
-print_with_encoding(text, encoding='cp1251')
+print_with_encoding(text, func_encoding='cp1251')
 print("\n")
 file.seek(0)
 text = file.readlines() # Считываем все строки
-print_with_encoding(''.join(text), encoding='cp1251')
+print_with_encoding(''.join(text), func_encoding='cp1251')
 print("\n")
 file.close() # Закрываем файл

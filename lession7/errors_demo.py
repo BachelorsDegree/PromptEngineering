@@ -1,4 +1,4 @@
-def demonstrate_errors():
+def demonstrate_errors() -> object:
     # Ошибка TypeError: can only concatenate str (not "int") to str
     try:
         result = "Hello" + 5
